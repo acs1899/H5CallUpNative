@@ -1,3 +1,7 @@
+# Fork 自用，如有问题请自行前往原仓储查看 [AlanZhang001/H5CallUpNative](https://github.com/AlanZhang001/H5CallUpNative)。
+
+---
+
 # 关于通过H5页面唤Native户端的介绍
 
 本文档用于介绍通过H5端唤起本地富途牛牛客户端的研究过程！起初是一些研究性质的文章，随着越来越多的人关注和提issue，所以这里做了一些更新。
@@ -5,6 +9,9 @@
 **快速使用见 5、相关代码**
 
 ## change log
+
+#### 2018/12/17
+- 添加 Universal Link 支持
 
 #### 2018/12/08
 - readme 关于chrome25的启动方式说明做了修正，建议来自来自[VIGDXX](https://github.com/VIGDXX)

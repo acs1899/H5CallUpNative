@@ -18,26 +18,30 @@ var browser = {
     isWx: function() {
         return navigator.userAgent.match(/micromessenger/i) ? true : false;
     },
-    isChrome: function(){
+    isChrome: function() {
         return (navigator.userAgent.match(/Chrome\/([\d.]+)/) || navigator.userAgent.match(/CriOS\/([\d.]+)/)) ? true : false;
     },
-    isBaidu: function(){
+    isBaidu: function() {
         return navigator.userAgent.match(/baidubrowser/i) ? true : false;
     },
-    isUC: function(){
+    isUC: function() {
         return navigator.userAgent.match(/UCBrowser/i) ? true : false;
     },
-    isSafari: function(){
+    isSafari: function() {
         return navigator.userAgent.match(/safari/i) ? true : false;
     },
-    isQQBrowser: function(){
+    isQQBrowser: function() {
         return navigator.userAgent.match(/MQQBrowser/i) ? true : false;
     },
-    isWeibo: function(){
+    isWeibo: function() {
         return navigator.userAgent.match(/weibo/i) ? true : false;
     },
-    isAlipay: function(){
+    isAlipay: function() {
         return navigator.userAgent.match(/Alipay/i) ? true : false;
+    },
+    getIOSVersion: function() {
+        const verion = navigator.appVersion.match(/OS (\d+)_(\d+)_?(\d+)?/);
+        return parseInt(verion[1], 10);
     }
 };
 

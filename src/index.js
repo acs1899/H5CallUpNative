@@ -34,6 +34,11 @@ var defautlConfig = {
         ACTION: 'android.intent.action.VIEW'
     },
 
+    // Universal Link
+    UNIVERSAL: {
+        HOST: ''
+    },
+
     // 唤起超时时间，超时则跳转到下载页面
     LOAD_WAITING: 3000
 };
@@ -143,7 +148,7 @@ extend(Callup.prototype,{
      * @param  {Object} config [打开时的配置]
      * @return {undefined}
      */
-    loadSchema: function(config){
+    loadSchema: function(config) {
 
         // 需要使用的schema
         var schemaUrl = this.generateSchema(config.targetURI);
@@ -167,6 +172,11 @@ extend(Callup.prototype,{
             || browser.isUC()
             || browser.isSafari()
             || browser.isQQBrowser()) {
+            // IOS9以上，如果配置了 Universal，则使用 Universal 唤起
+            if (browser.isIOS() && browser.getIOSVersion() > 9 && config.UNIVERSAL.HOST) {
+                this.loadUniversalLink(config);
+                return;
+            }
             var aLink = util.createALink(schemaUrl);
             body.appendChild(aLink);
             aLink.click();
@@ -186,7 +196,7 @@ extend(Callup.prototype,{
      * @private
      * @return {undefined}
      */
-    checkLoadStatus: function(success,fail){
+    checkLoadStatus: function(success,fail) {
         var start = new Date().getTime();
         var that = this;
         var loadTimer = setTimeout(function() {
@@ -223,6 +233,17 @@ extend(Callup.prototype,{
             clearTimeout(loadTimer);
             success && success();
         }, false);
+    },
+
+    /**
+     * [loadUniversalLink 通过Universal Link 唤起App]
+     * @param  {[Object]} config [打开时的配置]
+     * @return {[undefined]}
+     */
+    loadUniversalLink: function(config) {
+        const _a = document.createElement('a');
+        _a.href = config.targetURI;
+        window.top.location.href = `${config.UNIVERSAL.HOST}${_a.pathname}${_a.search}${_a.hash}`;
     }
 });
 
