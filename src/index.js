@@ -173,7 +173,7 @@ extend(Callup.prototype,{
             || browser.isSafari()
             || browser.isQQBrowser()) {
             // IOS9以上，如果配置了 Universal，则使用 Universal 唤起
-            if (browser.isIOS() && browser.getIOSVersion() > 9 && config.UNIVERSAL.HOST) {
+            if (browser.isIOS() && browser.getIOSVersion() > 9 && this.appConfig.UNIVERSAL.HOST) {
                 this.loadUniversalLink(config);
                 return;
             }
@@ -243,7 +243,7 @@ extend(Callup.prototype,{
     loadUniversalLink: function(config) {
         const _a = document.createElement('a');
         _a.href = config.targetURI;
-        window.top.location.href = `${config.UNIVERSAL.HOST}${_a.pathname}${_a.search}${_a.hash}`;
+        window.top.location.href = `${this.appConfig.UNIVERSAL.HOST}${_a.pathname}${_a.search}${_a.hash}`;
     }
 });
 
