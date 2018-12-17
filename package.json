@@ -1,6 +1,6 @@
 {
   "name": "@acs1899/tool-callapp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "本文档用于介绍通过H5端唤起本地NN客户端的研究过程！",
   "main": "index.js",
   "directories": {
